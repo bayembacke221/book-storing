@@ -1,7 +1,9 @@
 package sn.bmbacke.pad.eca.entity.book;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 import sn.bmbacke.pad.eca.common.BaseEntity;
 import sn.bmbacke.pad.eca.entity.feedback.Feedback;
 import sn.bmbacke.pad.eca.entity.history.BookTransactionHistory;
-import sn.bmbacke.pad.eca.entity.user.User;
 
 import java.util.List;
 
@@ -29,11 +30,6 @@ public class Book extends BaseEntity {
     private String bookCover;
     private boolean archived;
     private boolean shareable;
-
-
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
 
 
     @OneToMany(mappedBy = "book")

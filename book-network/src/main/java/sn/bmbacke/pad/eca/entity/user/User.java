@@ -8,8 +8,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import sn.bmbacke.pad.eca.entity.book.Book;
-import sn.bmbacke.pad.eca.entity.history.BookTransactionHistory;
 import sn.bmbacke.pad.eca.entity.role.Role;
 
 import java.security.Principal;
@@ -44,11 +42,6 @@ public class User implements UserDetails, Principal {
 
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
-
-    @OneToMany(mappedBy = "owner")
-    private List<Book> books;
-    @OneToMany(mappedBy = "user")
-    private List<BookTransactionHistory> histories;
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
