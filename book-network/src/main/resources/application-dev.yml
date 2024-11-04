@@ -7,7 +7,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
@@ -34,8 +34,21 @@ spring:
         jwt:
           issuer-uri: "http://localhost:9098/realms/book-social-network"
 application:
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate
+
   file:
     uploads:
       photos-output-path: ./uploads
+
+  security:
+    jwt:
+      secret-key: EzlKRzeO3KNOmxBKbrpUdaPrqtl0JAZbEUfQX798k0A=
+      expiration: 86400000
+
 server:
   port: 8088
+
+
+
