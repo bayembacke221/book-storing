@@ -12,7 +12,6 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import sn.bmbacke.pad.eca.common.BaseEntity;
 import sn.bmbacke.pad.eca.entity.book.Book;
-import sn.bmbacke.pad.eca.entity.user.User;
 
 @Getter
 @Setter
@@ -22,9 +21,9 @@ import sn.bmbacke.pad.eca.entity.user.User;
 @Entity
 public class BookTransactionHistory extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    // @ManyToOne
+    @Column(name = "user_id")
+    private String userId;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
