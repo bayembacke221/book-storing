@@ -10,7 +10,7 @@ import sn.bmbacke.pad.eca.entity.role.Role;
 import sn.bmbacke.pad.eca.repository.RoleRepository;
 
 @SpringBootApplication
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EnableAsync
 public class BookNetworkApplication {
 
