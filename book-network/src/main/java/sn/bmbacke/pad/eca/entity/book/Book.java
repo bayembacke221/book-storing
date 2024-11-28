@@ -1,9 +1,7 @@
 package sn.bmbacke.pad.eca.entity.book;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 import sn.bmbacke.pad.eca.common.BaseEntity;
 import sn.bmbacke.pad.eca.entity.feedback.Feedback;
 import sn.bmbacke.pad.eca.entity.history.BookTransactionHistory;
+import sn.bmbacke.pad.eca.entity.user.User;
 
 import java.util.List;
 
@@ -31,6 +30,9 @@ public class Book extends BaseEntity {
     private boolean archived;
     private boolean shareable;
 
+     @ManyToOne
+     @JoinColumn(name = "owner_id")
+     private User owner;
 
     @OneToMany(mappedBy = "book")
     private List<Feedback> feedbacks;
@@ -46,8 +48,7 @@ public class Book extends BaseEntity {
                 .mapToDouble(Feedback::getNote)
                 .average()
                 .orElse(0.0);
-        double roundedRate = Math.round(rate * 10.0) / 10.0;
 
-        return roundedRate;
+        return Math.round(rate * 10.0) / 10.0;
     }
 }
