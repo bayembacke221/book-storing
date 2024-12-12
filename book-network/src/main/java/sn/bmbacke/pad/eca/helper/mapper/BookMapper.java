@@ -8,21 +8,20 @@ import sn.bmbacke.pad.eca.payload.request.BookRequest;
 import sn.bmbacke.pad.eca.payload.response.BookResponse;
 import sn.bmbacke.pad.eca.payload.response.BorrowedBookResponse;
 
+
 @Service
 public class BookMapper {
-
     public Book toBook(BookRequest request) {
-
         return Book.builder()
                 .id(request.id())
                 .title(request.title())
-                .authorName(request.authorName())
                 .isbn(request.isbn())
+                .authorName(request.authorName())
                 .synopsis(request.synopsis())
+                .archived(false)
                 .shareable(request.shareable())
                 .build();
     }
-
 
     public BookResponse toBookResponse(Book book) {
         return BookResponse.builder()
